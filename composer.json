@@ -1,0 +1,27 @@
+{
+    "name": "mpoiriert/binder-bundle",
+    "type": "library",
+    "minimum-stability": "dev",
+    "description": "Reusable library",
+    "keywords": ["library","session","cookie","binding","nucleus"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Poirier Theoret",
+            "email": "mpoiriert@gmail.com"
+        }
+    ],
+
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "require": {
+        "php": ">=5.3",
+        "mpoiriert/binder": "*",
+        "symfony/framework-bundle": "~2.4",
+        "mpoiriert/nucleus-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": {"Nucleus\\Bundle\\BinderBundle": "src/"}
+    }
+}

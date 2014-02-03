@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="nucleus.binder" class="\\Nucleus\\Binder\\Binder">
+            <call method="registerVariableRegistry">
+                <argument type="service" id="nucleus.binder.variable_adpater.default" />
+            </call>
+        </service>
+        <service id="nucleus.binder.variable_adpater.default" class="\\Nucleus\\Bundle\\BinderBundle\\SessionVariableRegistryAdapter">
+            <argument type="service">
+                <service class="session" />
+            </argument>
+        </service>
+    </services>
+</container>
