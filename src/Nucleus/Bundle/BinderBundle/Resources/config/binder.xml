@@ -3,15 +3,14 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="nucleus.binder" class="\\Nucleus\\Binder\\Binder">
+        <service id="nucleus.binder" class="Nucleus\Binder\Binder">
             <call method="registerVariableRegistry">
                 <argument type="service" id="nucleus.binder.variable_adpater.default" />
             </call>
+            <tag name="kernel.event_listener" event="kernel.terminate" method="bindAll" />
         </service>
-        <service id="nucleus.binder.variable_adpater.default" class="\\Nucleus\\Bundle\\BinderBundle\\SessionVariableRegistryAdapter">
-            <argument type="service">
-                <service class="session" />
-            </argument>
+        <service id="nucleus.binder.variable_adpater.default" class="Nucleus\Bundle\BinderBundle\SessionVariableRegistryAdapter">
+            <argument type="service" id="session" />
         </service>
     </services>
 </container>

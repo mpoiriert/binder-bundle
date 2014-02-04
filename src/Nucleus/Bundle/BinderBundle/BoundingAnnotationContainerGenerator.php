@@ -3,6 +3,7 @@
 namespace Nucleus\Bundle\BinderBundle;
 
 use Nucleus\Binder\Bounding;
+use Nucleus\Binder\IBinder;
 use Nucleus\Bundle\CoreBundle\Annotation\IAnnotationContainerGenerator;
 use Nucleus\Bundle\CoreBundle\GenerationContext;
 
@@ -25,22 +26,22 @@ class BoundingAnnotationContainerGenerator implements IAnnotationContainerGenera
             $variableName = $context->getParsingContextName();
         }
 
-        if(!is_null($annotation->scope)) {
-            $scope = $annotation->scope;
+        if(!is_null($annotation->namespace)) {
+            $namespace = $annotation->namespace;
         } else {
-            $scope = $serviceName;
+            $namespace = $serviceName;
         }
 
-        $namespace = $annotation->namespace;
+        $scope = $annotation->scope;
 
         $serviceBinderAssignation = '
-    $sessionServiceBinder = $serviceContainer->getServiceByName("sessionServiceBinder");
+    $sessionServiceBinder = $serviceContainer->getServiceByName("' . IBinder::NUCLEUS_SERVICE_NAME . '");
 ';
         if (strpos($code, $serviceBinderAssignation) === false) {
             $code .= $serviceBinderAssignation;
         }
         $code .= '
-    $sessionServiceBinder->restore($service,"' . $variableName . '","' . $scope . '","' . $namespace . '");
+    $sessionServiceBinder->restore($service,"' . $variableName . '","' . $namespace . '","' . $scope . '");
 ';
 
         \Nucleus\Bundle\CoreBundle\Definition::setCodeInitialization($definition,$code);
