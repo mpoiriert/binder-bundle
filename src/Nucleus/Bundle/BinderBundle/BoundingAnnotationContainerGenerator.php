@@ -35,7 +35,7 @@ class BoundingAnnotationContainerGenerator implements IAnnotationContainerGenera
         $scope = $annotation->scope;
 
         $serviceBinderAssignation = '
-    $sessionServiceBinder = $serviceContainer->getServiceByName("' . IBinder::NUCLEUS_SERVICE_NAME . '");
+    $sessionServiceBinder = $serviceContainer->get("' . IBinder::NUCLEUS_SERVICE_NAME . '");
 ';
         if (strpos($code, $serviceBinderAssignation) === false) {
             $code .= $serviceBinderAssignation;
