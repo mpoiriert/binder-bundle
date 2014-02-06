@@ -41,7 +41,7 @@ class NucleusBinderExtension extends Extension implements PrependExtensionInterf
                 'annotation_container_generators' => array(
                     'bound' => array(
                         'annotationClass' => 'Nucleus\Binder\Bounding',
-                        'generatorClass' => 'Nucleus\Bundle\BinderBundle\BoundingAnnotationContainerGenerator'
+                        'generatorClass' => 'Nucleus\Bundle\BinderBundle\DependencyInjection\BoundingAnnotationContainerGenerator'
                     ),
                 )
             )

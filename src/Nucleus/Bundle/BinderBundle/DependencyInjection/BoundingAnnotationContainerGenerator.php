@@ -1,11 +1,12 @@
 <?php
 
-namespace Nucleus\Bundle\BinderBundle;
+namespace Nucleus\Bundle\BinderBundle\DependencyInjection;
 
 use Nucleus\Binder\Bounding;
 use Nucleus\Binder\IBinder;
-use Nucleus\Bundle\CoreBundle\Annotation\IAnnotationContainerGenerator;
-use Nucleus\Bundle\CoreBundle\GenerationContext;
+use Nucleus\Bundle\CoreBundle\DependencyInjection\IAnnotationContainerGenerator;
+use Nucleus\Bundle\CoreBundle\DependencyInjection\GenerationContext;
+use Nucleus\Bundle\CoreBundle\DependencyInjection\Definition;
 
 class BoundingAnnotationContainerGenerator implements IAnnotationContainerGenerator
 {
@@ -16,7 +17,7 @@ class BoundingAnnotationContainerGenerator implements IAnnotationContainerGenera
         $annotation = $context->getAnnotation();
 
         /* @var $annotation \Nucleus\Binder\Bounding */
-        $code = \Nucleus\Bundle\CoreBundle\Definition::getCodeInitalization($definition);
+        $code = Definition::getCodeInitalization($definition);
 
         $annotation->scope;
 
@@ -44,6 +45,6 @@ class BoundingAnnotationContainerGenerator implements IAnnotationContainerGenera
     $sessionServiceBinder->restore($service,"' . $variableName . '","' . $namespace . '","' . $scope . '");
 ';
 
-        \Nucleus\Bundle\CoreBundle\Definition::setCodeInitialization($definition,$code);
+        Definition::setCodeInitialization($definition,$code);
     }
 }

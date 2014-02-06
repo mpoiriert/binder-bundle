@@ -1,25 +1,33 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Martin
- * Date: 14-01-29
- * Time: 13:42
- * To change this template use File | Settings | File Templates.
- */
 
 namespace Nucleus\Bundle\BinderBundle\Tests\DependencyInjection;
 
-use Nucleus\Bundle\BinderBundle\DependencyInjection\NucleusBinderExtension;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Nucleus\Binder\IBinder;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class NucleusBinderExtensionTest extends \PHPUnit_Framework_TestCase
+class NucleusBinderExtensionTest extends WebTestCase
 {
-    public function testDefault()
+    public function test()
     {
-        $container = new ContainerBuilder();
-        $loader = new NucleusBinderExtension();
-        $loader->load(array(array()), $container);
+        $client = static::createClient();
 
-        $this->assertTrue($container->hasDefinition('nucleus.binder'), 'Nucleus binder is not loaded');
+        $request = new Request();
+        $response = new Response();
+        $testService = $client->getContainer()->get('test_service');
+
+        $testService->property = uniqid();
+
+        $client->getKernel()->terminate($request,$response);
+
+        $result = $client->getContainer()->get('session')->all();
+
+        $found = false;
+        array_walk_recursive($result, function($value) use ($testService, &$found) {
+            $found = $found || $value == $testService->property;
+        });
+
+        $this->assertTrue($found);
     }
 }
