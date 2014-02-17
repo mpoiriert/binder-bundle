@@ -1,6 +1,6 @@
 {
     "name": "mpoiriert/binder-bundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "minimum-stability": "dev",
     "description": "Reusable library",
     "keywords": ["library","session","cookie","binding","nucleus"],
