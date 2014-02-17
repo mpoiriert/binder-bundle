@@ -24,5 +24,6 @@
     },
     "autoload": {
         "psr-0": {"Nucleus\\Bundle\\BinderBundle": ""}
-    }
+    },
+    "target-dir": "Nucleus/Bundle/BinderBundle"
 }
