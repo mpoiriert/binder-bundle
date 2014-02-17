@@ -23,6 +23,6 @@
         "mpoiriert/nucleus-bundle": "*"
     },
     "autoload": {
-        "psr-0": {"Nucleus\\Bundle\\BinderBundle": "src/"}
+        "psr-0": {"Nucleus\\Bundle\\BinderBundle": ""}
     }
 }
