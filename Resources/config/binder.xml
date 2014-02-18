@@ -9,7 +9,7 @@
             </call>
             <tag name="kernel.event_listener" event="kernel.terminate" method="bindAll" />
         </service>
-        <service id="nucleus.binder.variable_adpater.default" class="Nucleus\Bundle\BinderBundle\SessionVariableRegistryAdapter">
+        <service id="nucleus.binder.variable_adpater.default" class="Nucleus\Bundle\BinderBundle\VariableRegistry\SessionVariableRegistryAdapter">
             <argument type="service" id="session" />
         </service>
     </services>

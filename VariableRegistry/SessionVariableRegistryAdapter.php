@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Martin
- * Date: 14-01-29
- * Time: 11:53
- * To change this template use File | Settings | File Templates.
- */
 
-namespace Nucleus\Bundle\BinderBundle;
+namespace Nucleus\Bundle\BinderBundle\VariableRegistry;
 
 use Nucleus\Binder\IBinder;
 use Nucleus\Binder\IVariableRegistry;
