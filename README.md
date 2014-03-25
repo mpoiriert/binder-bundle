@@ -57,4 +57,6 @@ By calling the TheService::setVariable() the value will be change and at the end
 If you need to access the value of this variable in "AnotherService" you need to inject "TheService" in "AnotherService"
 and call the TheService::getVariable(). The service who have the Bounded property is in charge of all the access to it.
 
-This approach also help for unit test since you don't need to use the session anymore.
+This approach also help for unit test since you don't need to use the session anymore. It also force to have a separation
+of concern in your service since no other service can change the value in the session by manipulating it directly since
+it's inner working are hidden.

@@ -2,7 +2,6 @@
 
 namespace Nucleus\Bundle\BinderBundle\Tests\DependencyInjection;
 
-use Nucleus\Binder\IBinder;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
